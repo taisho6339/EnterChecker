@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <LinearLayout
+        style="@style/width_full_style"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <EditText
+            style="@style/width_weight_style"
+            android:layout_weight="3"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/search_button"
+            style="@style/width_weight_style"
+            android:layout_weight="1"
+            android:text="@string/search_button_text" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/search_map_frame_content"
+        style="@style/width_full_style"
+        android:layout_height="0dp"
+        android:layout_weight="4" >
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/search_register_button"
+        style="@style/width_full_style"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="@string/search_register_button_text" />
+
+</LinearLayout>
