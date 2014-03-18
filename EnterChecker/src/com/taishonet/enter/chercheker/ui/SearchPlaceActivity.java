@@ -1,10 +1,12 @@
-package com.taishonet.enter.chercheker;
+package com.taishonet.enter.chercheker.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import com.taishonet.enter.chercheker.R;
 
 public class SearchPlaceActivity extends Activity {
 
