@@ -1,3 +1,5 @@
 /EnterChecker/bin/*
 /EnterChecker/gen/*
 .DS_Store
+/EnterCheckerTest/bin/*
+/EnterCheckerTest/gen/*
