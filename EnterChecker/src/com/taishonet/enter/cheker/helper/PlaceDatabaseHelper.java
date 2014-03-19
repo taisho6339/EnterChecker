@@ -1,4 +1,4 @@
-package com.taishonet.enter.chercheker.helper;
+package com.taishonet.enter.cheker.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

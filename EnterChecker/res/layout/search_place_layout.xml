@@ -12,6 +12,7 @@
         android:orientation="horizontal" >
 
         <EditText
+            android:id="@+id/search_word_edit"
             style="@style/width_weight_style"
             android:layout_weight="3"
             android:inputType="text" />
@@ -27,7 +28,7 @@
         android:id="@+id/search_map_frame_content"
         style="@style/width_full_style"
         android:layout_height="0dp"
-        android:layout_weight="4" >
+        android:layout_weight="6" >
     </FrameLayout>
 
     <Button
