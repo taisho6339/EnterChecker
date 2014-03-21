@@ -1,6 +1,5 @@
-package com.taishonet.enter.checker.model;
+package com.taishonet.enter.checker.interfaces;
 
-import org.json.JSONObject;
 
 /**
  *  ネットワーク通信処理など非同期で行いたい処理をラップするインターフェース
@@ -8,5 +7,5 @@ import org.json.JSONObject;
  */
 
 public interface RunTask {
-	public JSONObject run();
+	public Object run();
 }

@@ -1,13 +1,11 @@
 package com.taishonet.enter.checker.test;
 
-import org.json.JSONObject;
-
 import android.content.Context;
 import android.test.AndroidTestCase;
 
-import com.taishonet.enter.checker.interfaces.RequestCallBack;
+import com.taishonet.enter.checker.interfaces.CallBack;
+import com.taishonet.enter.checker.interfaces.RunTask;
 import com.taishonet.enter.checker.model.RequestTask;
-import com.taishonet.enter.checker.model.RunTask;
 
 
 public class RequestTaskTest extends AndroidTestCase {
@@ -25,17 +23,17 @@ public class RequestTaskTest extends AndroidTestCase {
 	public void test任意の非同期処理の実行に成功する() {
 		RunTask task = new RunTask() {
 			@Override
-			public JSONObject run() {
+			public Object run() {
 				return null;
 			}
 		};
-		RequestCallBack callback = new RequestCallBack() {
+		CallBack callback = new CallBack() {
 
 			@Override
-			public void doCallBack(JSONObject data) {
+			public void doCallBack(Object data) {
 			}
 		};
-		RequestTask request = new RequestTask(mContext, task, callback,RequestTask.TASK_MODE_NETWORK);
+		RequestTask request = new RequestTask(mContext, task, callback);
 		request.execute();
 	}
 }

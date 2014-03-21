@@ -19,7 +19,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.taishonet.enter.checker.R;
-import com.taishonet.enter.checker.interfaces.UICallBack;
+import com.taishonet.enter.checker.interfaces.CallBack;
+import com.taishonet.enter.checker.interfaces.RunTask;
+import com.taishonet.enter.checker.model.RequestTask;
 
 public class SearchPlaceActivity extends Activity {
 
@@ -27,6 +29,31 @@ public class SearchPlaceActivity extends Activity {
 	private Button mAddButton;
 	private EditText mEditSearchBox;
 	private SearchResultMapFragment mMapFragment;
+	private String mAddressStr = "";
+	private RunTask mGetTask = new RunTask() {
+		@Override
+		public Object run() {
+			List<Address> addressList = getLocation(mAddressStr);
+			return addressList;
+		}
+	};
+	
+	@SuppressWarnings("unchecked")
+	private CallBack mCallBack = new CallBack() {
+		
+		@Override
+		public void doCallBack(Object resultData) {
+			if(!(resultData instanceof List))
+				return ;
+			List<Address> addressList = (List<Address>)resultData;
+			if (addressList == null || addressList.size() <= 0){
+				pushErrorToast();
+				return;
+			}
+			setLocationToMap(addressList.get(0), mAddressStr);
+		}
+	};
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,27 +103,14 @@ public class SearchPlaceActivity extends Activity {
 	}
 	
 	private void postSearchPlace() {
-		String str = mEditSearchBox.getText().toString();
+		final String str = mEditSearchBox.getText().toString();
 		if (str.equals("")) {
 			pushErrorToast();
 			return;
 		}
 		closeKeyboard();
-		
-		UICallBack callBack = new UICallBack() {
-			
-			@Override
-			public void doCallBack() {
-				// TODO 自動生成されたメソッド・スタブ
-				
-			}
-		};
-		List<Address> addressList = getLocation(str);
-		if (addressList == null || addressList.size() <= 0){
-			pushErrorToast();
-			return;
-		}
-		setLocationToMap(addressList.get(0), str);
+		RequestTask reqTask = new RequestTask(this, mGetTask, mCallBack);
+		reqTask.execute();
 	}
 	
 	private void registerPlace(){
