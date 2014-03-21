@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <TextView
+        style="@style/default_view_style"
+        android:text="@string/name" />
+
+    <EditText
+        android:id="@+id/add_dialog_name_box"
+        style="@style/width_full_style" />
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        style="@style/width_full_style"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/default_view_style"
+            android:text="@string/radius" />
+
+        <EditText
+            android:id="@+id/add_dialog_radius_box"
+            android:layout_width="50dp"
+            style="@style/default_view_style" />
+        
+        <TextView style="@style/default_view_style"
+            android:text="@string/add_dialog_meter_less_text"/>
+    </LinearLayout>
+
+</LinearLayout>

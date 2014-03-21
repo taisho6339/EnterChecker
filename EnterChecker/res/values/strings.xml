@@ -4,11 +4,13 @@
     <string name="app_name">EnterChecker</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    
     <string name="network_task_connecting">接続中</string>
     <string name="network_task_message">サーバに接続しています....</string>
-    
+    <string name="get_search_error">場所の取得に失敗しました。\n正しく住所を入力してください。</string>
+    <string name="name">名前</string>
+    <string name="radius">半径</string>
+    <string name="add_dialog_meter_less_text">m以内</string>
     <string name="search_button_text">検索</string>
     <string name="search_register_button_text">登録</string>
-    
+
 </resources>
