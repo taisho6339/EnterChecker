@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <TextView
+        style="@style/default_view_style"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/place_view_all_text"
+        android:textSize="@dimen/place_view_title_text_size" />
+
+    <ListView
+        android:id="@+id/place_view_list"
+        style="@style/default_view_style" />
+
+</LinearLayout>

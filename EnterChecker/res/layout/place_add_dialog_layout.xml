@@ -30,5 +30,9 @@
         <TextView style="@style/default_view_style"
             android:text="@string/add_dialog_meter_less_text"/>
     </LinearLayout>
+    
+    <Button style="@style/width_full_style"
+        android:id="@+id/search_register_add_button"
+        android:text="@string/search_register_button_text"/>
 
 </LinearLayout>

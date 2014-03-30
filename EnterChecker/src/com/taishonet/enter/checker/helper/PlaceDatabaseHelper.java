@@ -11,7 +11,9 @@ public class PlaceDatabaseHelper extends SQLiteOpenHelper {
 	private static final String[] FIRST_SQLS = { "create table t_places(_id integer primary key autoincrement,"
 			+ "place_name text not null,"
 			+ "latitude text not null,"
-			+ "longitude text not null," + "address text not null)" };
+			+ "longitude text not null,"
+			+ "radius integer not null,"
+			+ "address text not null)" };
 
 	public PlaceDatabaseHelper(Context context) {
 		super(context, DB_NAME, null, DB_VERSION);

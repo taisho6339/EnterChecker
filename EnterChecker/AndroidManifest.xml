@@ -37,6 +37,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.taishonet.enter.checker.ui.SearchPlaceActivity" />
+        <activity android:name="com.taishonet.enter.checker.ui.PlaceListActivity"/>
     </application>
 
 </manifest>

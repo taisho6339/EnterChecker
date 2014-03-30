@@ -8,4 +8,9 @@ public final class Config {
 	public static final String DB_KEY_PLACE_LATITUDE = "latitude";
 	public static final String DB_KEY_PLACE_LONGITUDE = "longitude";
 	public static final String DB_KEY_PLACE_ADDRESS = "address";
+	public static final String DB_KEY_PLACE_RADIUS = "radius";
+
+	public static final String EXTRA_KEY_PLACE_ADDRESS = "address";
+	public static final String EXTRA_KEY_PLACE_LATITUDE = "latitude";
+	public static final String EXTRA_KEY_PLACE_LONGITUDE = "longitude";
 }

@@ -16,12 +16,12 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.taishonet.enter.checker.R;
 import com.taishonet.enter.checker.interfaces.CallBack;
 import com.taishonet.enter.checker.interfaces.RunTask;
 import com.taishonet.enter.checker.model.RequestTask;
+import com.taishonet.enter.checker.utilities.UIUtil;
 
 public class SearchPlaceActivity extends Activity {
 
@@ -30,6 +30,9 @@ public class SearchPlaceActivity extends Activity {
 	private EditText mEditSearchBox;
 	private SearchResultMapFragment mMapFragment;
 	private String mAddressStr = "";
+	private Address mPlace = null;
+	private boolean mIsRegisterable = false;
+
 	private RunTask mGetTask = new RunTask() {
 		@Override
 		public Object run() {
@@ -37,23 +40,23 @@ public class SearchPlaceActivity extends Activity {
 			return addressList;
 		}
 	};
-	
+
 	@SuppressWarnings("unchecked")
 	private CallBack mCallBack = new CallBack() {
-		
+
 		@Override
 		public void doCallBack(Object resultData) {
-			if(!(resultData instanceof List))
-				return ;
-			List<Address> addressList = (List<Address>)resultData;
-			if (addressList == null || addressList.size() <= 0){
-				pushErrorToast();
+			if (!(resultData instanceof List))
+				return;
+			List<Address> addressList = (List<Address>) resultData;
+			if (addressList == null || addressList.size() <= 0) {
+				UIUtil.pushToast(SearchPlaceActivity.this,R.string.network_get_search_error);
 				return;
 			}
+			mPlace = addressList.get(0);
 			setLocationToMap(addressList.get(0), mAddressStr);
 		}
 	};
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -98,23 +101,27 @@ public class SearchPlaceActivity extends Activity {
 		return null;
 	}
 
-	private void pushErrorToast(){
-		Toast.makeText(this, R.string.get_search_error, Toast.LENGTH_SHORT).show();
-	}
-	
+
 	private void postSearchPlace() {
-		final String str = mEditSearchBox.getText().toString();
-		if (str.equals("")) {
-			pushErrorToast();
+		mAddressStr = mEditSearchBox.getText().toString();
+		if (mAddressStr.equals("")) {
+			mIsRegisterable = false;
+			UIUtil.pushToast(this,R.string.network_get_search_error);
 			return;
 		}
 		closeKeyboard();
+		mIsRegisterable = true;
 		RequestTask reqTask = new RequestTask(this, mGetTask, mCallBack);
 		reqTask.execute();
 	}
-	
-	private void registerPlace(){
-		
+
+	private void registerPlace() {
+		if (!mIsRegisterable){
+			UIUtil.pushToast(this,R.string.search_place_register_error);
+			return;
+		}
+		RegisterDialogFragment dialogFragment = RegisterDialogFragment.newInstance(mAddressStr, mPlace);
+		dialogFragment.show(getFragmentManager(), "dialog");
 	}
 
 	class ButtonClickListener implements OnClickListener {
@@ -126,6 +133,7 @@ public class SearchPlaceActivity extends Activity {
 				postSearchPlace();
 				break;
 			case R.id.search_register_button:
+				registerPlace();
 				break;
 			default:
 				break;

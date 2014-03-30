@@ -6,11 +6,18 @@
     <string name="hello_world">Hello world!</string>
     <string name="network_task_connecting">接続中</string>
     <string name="network_task_message">サーバに接続しています....</string>
-    <string name="get_search_error">場所の取得に失敗しました。\n正しく住所を入力してください。</string>
+    <string name="network_get_search_error">場所の取得に失敗しました。\n正しく住所を入力してください。</string>
+    <string name="search_place_register_error">まず場所を検索してください！</string>
+    <string name="search_place_register_dialog_error">必要事項を埋めてください</string>
+    <string name="search_place_register_dialog_success">場所の登録に成功しました</string>
     <string name="name">名前</string>
     <string name="radius">半径</string>
     <string name="add_dialog_meter_less_text">m以内</string>
+    <string name="search_register_title_text">場所の登録</string>
+    <string name="search_keyword_box_hint_text">登録したい住所を入力してください。</string>
     <string name="search_button_text">検索</string>
     <string name="search_register_button_text">登録</string>
+    <string name="view_button_text">表示</string>
+    <string name="place_view_all_text">登録された勤務地</string>
 
 </resources>
